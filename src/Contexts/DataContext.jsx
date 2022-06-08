@@ -21,9 +21,56 @@ export const DataContextProvider = ({children}) =>{
         console.log('data:', Data)
         setData(Data);
     }
+    const handleIncrement = (id,count) => {
+        console.log('count:', count)
+        console.log('id:', id)
+        let Data =[];
+        for(var i = 0; i<data.length; i++) {
+            if(data[i].id === id) {
+                data[i]["count"] += count;
+                Data.push(data[i]);
+            }
+            else {
+                Data.push(data[i]);
+            }
+        }
+        console.log('Data:', Data)
+        setData(Data);
+    }
+
+    const handleDecrement = (id,count) => {
+        console.log('count:', count)
+    
+    
+        console.log('id:', id)
+        var Data = [];
+        for(var i = 0; i<data.length; i++) {
+            if(data[i].id === id) {
+                
+                if(data[i].count === 0) {
+                    Data.push(data[i]);
+                }
+
+                else {
+                    data[i]["count"] += count;
+                    if(data[i].count === 0) {
+                        data[i]["done"] = true;
+                    }
+                    Data.push(data[i]);
+                }
+
+            }
+            else {
+                Data.push(data[i]);
+            }
+        }
+        console.log('Data:', Data)
+        setData(Data);
+
+    }
     return (
 
-        <DataContext.Provider value= {{ data, handleData, handleNewData, handleDeleteData }}>{children}</DataContext.Provider>
+        <DataContext.Provider value= {{ data, handleData, handleNewData, handleDeleteData, handleIncrement, handleDecrement  }}>{children}</DataContext.Provider>
 
     )
 

@@ -39,8 +39,7 @@ const Task = () => {
               </>
               }
               {/* Counter here */}
-        
-              <Counter counter = {element.count} />
+              <Counter id = {element.id} counter = {element.count} />
               <button onClick={() => {
                 handleDeleteData(element.id)
               }} data-testid="task-remove-button">x</button>
