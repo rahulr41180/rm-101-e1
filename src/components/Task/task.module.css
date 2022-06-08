@@ -1,3 +1,7 @@
 .task {
   /* Sample  */
+
+  border : 1px solid;
+  display: flex;
+  gap: .2vw;
 }
