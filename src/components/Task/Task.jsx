@@ -9,7 +9,7 @@ import { DataContext } from "../../Contexts/DataContext";
 const Task = () => {
   console.log("tasks :",tasks)
   // const [data, setData] = useState([]);
-  const  { data, handleData } = useContext(DataContext);
+  const  { data, handleData, handleDeleteData } = useContext(DataContext);
   console.log('dataContext:', data)
 
   useEffect(() => {
@@ -41,7 +41,9 @@ const Task = () => {
               {/* Counter here */}
         
               <Counter counter = {element.count} />
-              <button data-testid="task-remove-button">x</button>
+              <button onClick={() => {
+                handleDeleteData(element.id)
+              }} data-testid="task-remove-button">x</button>
             </li>
           )
       })}

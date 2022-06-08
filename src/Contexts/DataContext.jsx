@@ -12,10 +12,18 @@ export const DataContextProvider = ({children}) =>{
     const handleNewData = (newData) => {
         setData([...data, newData]);
     }
-    
+    const handleDeleteData = (id) => {
+        console.log('id:', id)
+        let Data = data.filter((a) => {
+            // console.log('a:', a)
+            return a.id !== id
+        })
+        console.log('data:', Data)
+        setData(Data);
+    }
     return (
 
-        <DataContext.Provider value= {{ data, handleData, handleNewData }}>{children}</DataContext.Provider>
+        <DataContext.Provider value= {{ data, handleData, handleNewData, handleDeleteData }}>{children}</DataContext.Provider>
 
     )
 
